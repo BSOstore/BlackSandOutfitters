@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AurumAI Field App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='images/green_wifi_status_32.webp') }}" alt="Online">
+    <img src="{{ url_for('static', filename='images/yellow_wifi_status_32.webp') }}" alt="Online">
+    <img src="{{ url_for('static', filename='images/red_wifi_status_32.webp') }}" alt="Online">
+    
+
+       <h1>AurumAI Field App</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Site Name" required>
+        <input type="text" name="lat" placeholder="Latitude" required>
+        <input type="text" name="lon" placeholder="Longitude" required>
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <button type="submit">Add Site</button>
+    </form>
+    <div id="map" style="height: 500px;"></div>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([35.189, -114.053], 10);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    </script>
+</body>
+</html>

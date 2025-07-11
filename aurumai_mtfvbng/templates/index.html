@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AurumAI Field App</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <img src="/static/img/logo.png" alt="Logo"><h1>AurumAI Field App</h1>
+        <button onclick="recenterMap()">Recenter</button>
+    </header>
+
+    <main>
+        <form action="/add" method="POST">
+            <input type="text" name="name" placeholder="Site Name" required>
+            <input type="text" name="lat" placeholder="Latitude" required>
+            <input type="text" name="lon" placeholder="Longitude" required>
+            <textarea name="notes" placeholder="Notes"></textarea>
+            <button type="submit">Add Site</button>
+        </form>
+
+        <div id="map" style="height: 500px;"></div>
+    </main>
+
+    <script>
+        var defaultLat = 35.189;
+        var defaultLon = -114.053;
+        var map = L.map('map', {
+            center: [defaultLat, defaultLon],
+            zoom: 10,
+            zoomSnap: 1,
+            zoomDelta: 1,
+            doubleClickZoom: false
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker = L.marker([defaultLat, defaultLon]).addTo(map)
+            .bindPopup("Welcome to Kingman, AZ. Start here.")
+            .openPopup();
+
+        // Try to center on user's current location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLat = position.coords.latitude;
+                var userLon = position.coords.longitude;
+                map.setView([userLat, userLon], 13);
+            }, function(error) {
+                console.warn("Geolocation failed, defaulting to Kingman.");
+            });
+        }
+
+        function recenterMap() {
+            map.setView([defaultLat, defaultLon], 10);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AurumAI Feedback</title>
+</head>
+<body>
+    <h1>Feedback Portal</h1>
+    <form action="/submit_feedback" method="POST">
+        <label>Ease of Use (1-5):</label>
+        <input type="number" name="ease" min="1" max="5"><br>
+        <label>Map Accuracy (1-5):</label>
+        <input type="number" name="accuracy" min="1" max="5"><br>
+        <label>Interface Quality (1-5):</label>
+        <input type="number" name="ui" min="1" max="5"><br>
+        <label>Additional Comments:</label><br>
+        <textarea name="comments"></textarea><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+</html>
