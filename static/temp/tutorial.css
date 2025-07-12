@@ -1,0 +1,8 @@
+/* FINAL OVERRIDE FOR GIF WIDTH */
+.tutorial-step img.tutorial-gif {
+  max-width: 50% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 8px !important;
+}

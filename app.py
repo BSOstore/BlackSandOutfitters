@@ -303,6 +303,10 @@ def beta_rating():
     return render_template("beta_rating.html", average=average, count=len(ratings))
 
 
+# PRIVACY PAGE
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
 
 
