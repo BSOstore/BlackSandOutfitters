@@ -11,7 +11,7 @@ app = Flask(__name__, template_folder='templates')
 @app.route("/")
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    return render_template("home1.html")
+    return render_template("index.html")
 
 # ----- FAQ PAGE -----
 @app.route("/faq")
