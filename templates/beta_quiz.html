@@ -43,18 +43,23 @@
         <textarea name="dislike" rows="4" cols="50" placeholder="feature suggestions." required></textarea><br><br>
 
         <label>Preferred gear type:</label><br>
-        <input type="radio" name="gear" value="Panning" required> Panning<br>
-        <input type="radio" name="gear" value="Sluice" required> Sluice<br>
-        <input type="radio" name="gear" value="Highbanker" required> Highbanker<br>
-        <input type="radio" name="gear" value="Dredge" required> Dredge<br>
-        <input type="radio" name="gear" value="Drywasher"> Drywasher<br>
-        <input type="radio" name="gear" value="Metal Detector"> Metal Detector<br><br>
+        <div class="form-group">
+            <input type="radio" name="gear" value="Panning" required> Panning<br>
+            <input type="radio" name="gear" value="Sluice" required> Sluice<br>
+            <input type="radio" name="gear" value="Highbanker" required> Highbanker<br>
+            <input type="radio" name="gear" value="Dredge" required> Dredge<br>
+            <input type="radio" name="gear" value="Drywasher"> Drywasher<br>
+            <input type="radio" name="gear" value="Metal Detector"> Metal Detector<br><br>
+        </div>
+
 
         <label>What’s most important to you in your gear?</label><br>
-        <input type="checkbox" name="priority" value="Weight"> Lightweight<br>
-        <input type="checkbox" name="priority" value="Price"> Affordable<br>
-        <input type="checkbox" name="priority" value="Durability"> Durable<br>
-        <input type="checkbox" name="priority" value="Performance"> Max Recovery<br><br>
+        <div class="form-group">
+            <input type="checkbox" name="priority" value="Weight"> Lightweight<br>
+            <input type="checkbox" name="priority" value="Price"> Affordable<br>
+            <input type="checkbox" name="priority" value="Durability"> Durable<br>
+            <input type="checkbox" name="priority" value="Performance"> Max Recovery<br><br>
+        </div>
 
         <label for="rating">How would you rate the app overall?</label><br>
         <input type="range" id="rating" name="rating" min="1" max="5" value="3" oninput="updateRating(this.value)">
