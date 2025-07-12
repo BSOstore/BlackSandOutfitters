@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – AurumAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+</head>
+
+<body>
+  {% include '_navbar.html' %}
+  <div class="container">
+    <h1>About AurumAI</h1>
+
+    <!-- WHY AURUMAI WAS CREATED -->
+    <div class="about-container">
+      <p>
+        AurumAI wasn’t built in a boardroom. It was born in the dirt — under the sun, next to the shovel,
+        chasing streaks of color in black sand. As a prospector with over 30 years of field experience, I grew
+        tired of apps built by people who had never even <i>seen</i> a sluice box. I needed something smarter.
+        Something intuitive. Something I could actually use in the real world in real time — with gloves on, no signal,
+        and the sun in my eyes.
+      </p>
+
+      <p>And when I couldn’t find it, I built it myself.</p>
+
+      <p>
+        AurumAI is designed for people like you — who don’t need fluff, just function. It’s the tool
+        I always wished existed. Even the free version is <i>fully capable</i> of
+        serving you in the field as a standalone.
+        There's no bait, no switch, no requirement to upgrade for it to function. Just an honest app from an honest
+        company. When you're ready, upgrades will still be there. Black Sand Outfitters wants to earn your
+        trust first.
+      </p>
+
+      <h1>Coming Soon!</h1>
+      <p>
+        We are planning a <i>ton</i> of upgrades to this app to make it even more useful to you.
+        These features and much more are coming in version 1.2.
+      </p>
+
+      <!-- ✅ BUTTON GROUP (Tooltips only, no JS) -->
+      <div class="container">
+        <div class="button-group-coming">
+          <button title="Smart ROI Calculator helps you measure trip expenses versus potential returns.">
+            Smart ROI Calculator
+          </button>
+          <button title="Track your gold recovery over time, identify trends, and improve your methods.">
+            Gold Progress Tracker
+          </button>
+          <button title="Checklist and pack-out system to ensure nothing is forgotten before heading out.">
+            Stow Before You Go
+          </button>
+          <button title="Look up mining terms and geology lingo while in the field.">
+            Prospectors Dictionary
+          </button>
+          <button title="Premium-only features like MRDS overlay, historical documents, and offline mode.">
+            Premium-Only Features
+          </button>
+          <button title="Adapts to your behavior and site history to make smarter recommendations.">
+            Adaptive AI
+          </button>
+        </div>
+      </div>
+
+      <!-- COMING ATTRACTIONS -->
+      <div class="about-coming-soon-container">
+        <h3>"Pocket Geologist" - </h3>
+        <p>Snap a rock photo; AI analyzes mineral content and predicts gold probability with a correlation coefficient
+          scale.</p>
+
+        <h3>Smart ROI Calculator - </h3>
+        <p>Input gas, food, time, gear costs and compare that against your found gold value. Shows profit/loss to
+          further help you track your progress.</p>
+
+        <h3>Gold Discovery Progress Tracker - </h3>
+        <p>Weekly, monthly, yearly totals tracked. Personalized charts or stats.</p>
+
+        <h3>"Stow Before You Go" Checklist - </h3>
+        <p>AI or user-generated packing list to avoid forgotten gear. (“Where’s my pickaxe?”)</p>
+
+        <h3>Educational Word Tap - </h3>
+        <p>In “Teach Me” mode, tap highlighted terms (e.g., porphyry) to get instant definitions.</p>
+
+        <h3>Vertical "Carnival Bell" Progress Bar - </h3>
+        <p>Retro-themed scoring graphic tied to your prospecting results.</p>
+
+        <h3>Premium-Only Features - </h3>
+        <p>Early subscriber perks, exclusive tools, lifetime discount lock-in.</p>
+
+        <h3>Adaptive AI - </h3>
+        <p>Learns your patterns and prospecting style to refine recommendations.</p>
+      </div>
+    </div>
+  </div>
+  {% include '_footer.html' %}
+</body>
+
+</html>

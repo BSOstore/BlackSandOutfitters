@@ -1,0 +1,536 @@
+/* === GENERAL PAGE STYLE === */
+body {
+  font-family: Arial, sans-serif;
+  color: #000;
+  margin: 0;
+  padding: 2rem;
+  background: #ffd700;
+}
+
+.dual-panel-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-panel form input,
+.form-panel form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-panel form button {
+  padding: 0.6rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saved-panel .sites-scroll {
+  overflow-y: auto;
+  flex-grow: 1;
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+
+.site-entry {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.site-entry:hover {
+  background: #f0f0f0;
+}
+
+/*PAGE HEADER*/
+.app-header {
+  background-color: #1c1c1c;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+/*LANDING PAGE*/
+.logo-container .logo {
+  max-height: 80px;
+  margin-bottom: 0.3rem;
+}
+
+.logo-container .tagline {
+  color: #d4af37;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+header img {
+  height: 40px;
+}
+h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+/*BUTTONS*/
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*gap: 15px;*/
+}
+
+main {
+  padding: 20px;
+}
+form {
+  margin-bottom: 20px;
+}
+input,
+textarea {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+  background: #222;
+  color: #ffd700;
+  border: 1px solid #ffd700;
+}
+#map {
+  height: 500px;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+  z-index: 0;
+}
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px;
+}
+
+.saved-sites-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 3fr;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.table-header {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.table-row {
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-body {
+  max-height: 12.5em;
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row span,
+.table-header span {
+  text-align: left;
+}
+
+.add-site-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  align-items: stretch;
+  background-color: transparent; /* optional for visual clarity */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* align label to the left */
+  width: 100%;
+  max-width: 400px; /* control width of group */
+}
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.settings-icon {
+  position: absolute;
+  top: 3.5rem;
+  right: 1rem;
+  width: 30px !important;
+  height: 30px !important;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.settings-panel {
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+  background: #2a2a2a;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.settings-panel label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.settings-panel button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: #d4af37;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.menu-button {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 12px;
+  background-color: #000;
+  color: #ffd700;
+  border: none;
+  box-shadow: 2px 2px 0 #444;
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 0 #666;
+}
+
+/*CSS for FAQ page*/
+.faq-links li {
+  margin-bottom: 10px;
+}
+
+.faq-links a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.faq-answer {
+  margin: 40px 0;
+}
+/* === NEW LANDING PAGE ICON LAYOUT === */
+
+.ui-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+}
+
+/* Home icon: top-left */
+.home-icon {
+  top: 0.5rem;
+  left: 1rem;
+}
+
+/* Signal icon: top-right */
+.signal-icon {
+  top: 0.5rem;
+  right: 1rem;
+}
+
+/* Settings icon: middle-right */
+.settings-icon {
+  top: 4rem;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+/* Grid overlay styles */
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* lets map remain interactive */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  z-index: 500;
+}
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 12px 18px;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  bottom: 30px;
+  font-size: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.add-site-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  align-items: stretch;
+  background-color: transparent; /* optional for visual clarity */
+}
+
+.add-site-form input,
+.add-site-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-site-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.toast.show {
+  visibility: visible;
+  animation:
+    fadein 0.5s,
+    fadeout 0.5s 4.5s;
+}
+
+.toast-close {
+  margin-left: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.grid-overlay div {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.grid-overlay.hidden {
+  display: none;
+}
+
+/* Optional button */
+.grid-toggle-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 20rem;
+  background-color: #000;
+  color: #ffd700;
+  border: 1px solid #ffd700;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  z-index: 600;
+  cursor: pointer;
+}
+
+/*ABOUT PAGE*/
+.about-container {
+  padding: 2rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #eee;
+}
+
+.about-text {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.about-back-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #d4af37;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+/*LINKS*/
+.about-link {
+  margin-top: 1rem;
+  color: #d4af37;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  display: block;
+  text-align: center;
+}
+
+/*MAP OVERLAY BUTTONS*/
+.map-wrapper {
+  /* NEW */
+  position: relative; /* gives absolute children a reference */
+  height: 100vh;
+  width: 100%;
+}
+
+#map {
+  /* adjust if you already have this */
+  height: 100%;
+  width: 100%;
+}
+
+.button-stack {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+.map-overlay-button {
+  background-color: #d4a017;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.map-overlay-button:hover {
+  background-color: #b5890d;
+}
+
+.back-home-button {
+  background-color: #444;
+  color: #fff;
+}
+
+.back-home-button:hover {
+  background-color: #666;
+}
+
+/* COMING SOON BUTTONS */
+.button-group-coming {
+  background-color: #b5890d;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px; /* optional */
+}
+.button-group-coming button {
+  padding: 10px;
+}

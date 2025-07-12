@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h2>Beta Quiz</h2>
+    <form method="POST" action="/submit-quiz">
+        <!-- Quiz questions will go here -->
+        <label>How often do you go prospecting?</label><br>
+        <select name="frequency" required>
+            <option value="">--Select--</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Rarely">Rarely</option>
+        </select><br><br>
+
+        <label>How long have you been a prospector?</label><br>
+        <select name="experience" required>
+            <option value="">--Select--</option>
+            <option value="Newbie">Newbie</option>
+            <option value="First">Less than a year</option>
+            <option value="second">1-5 years</option>
+            <option value="third">More than 5 years</option>
+        </select><br><br>
+
+        <label>What did you like about the app so far?</label><br>
+        <textarea name="like" rows="4" cols="50" placeholder="Your feedback..." required></textarea><br><br>
+
+        <label>What could we improve?</label><br>
+        <textarea name="dislike" rows="4" cols="50" placeholder="Be honest—we want to improve."
+            required></textarea><br><br>
+
+        <label>What other features would you like to see?</label><br>
+        <textarea name="dislike" rows="4" cols="50" placeholder="feature suggestions." required></textarea><br><br>
+
+        <label>Preferred gear type:</label><br>
+        <input type="radio" name="gear" value="Panning" required> Panning<br>
+        <input type="radio" name="gear" value="Sluice" required> Sluice<br>
+        <input type="radio" name="gear" value="Highbanker" required> Highbanker<br>
+        <input type="radio" name="gear" value="Dredge" required> Dredge<br>
+        <input type="radio" name="gear" value="Drywasher"> Drywasher<br>
+        <input type="radio" name="gear" value="Metal Detector"> Metal Detector<br><br>
+
+        <label>What’s most important to you in your gear?</label><br>
+        <input type="checkbox" name="priority" value="Weight"> Lightweight<br>
+        <input type="checkbox" name="priority" value="Price"> Affordable<br>
+        <input type="checkbox" name="priority" value="Durability"> Durable<br>
+        <input type="checkbox" name="priority" value="Performance"> Max Recovery<br><br>
+
+        <label for="rating">How would you rate the app overall?</label><br>
+        <input type="range" id="rating" name="rating" min="1" max="5" value="3" oninput="updateRating(this.value)">
+        <span id="rating-value">3</span> / 5<br><br>
+
+
+        <button type="submit">Submit Quiz</button>
+
+    </form>
+
+    <script>
+        function updateRating(val) {
+            document.getElementById('rating-value').innerText = val;
+        }
+    </script>
+
+</body>
+
+</html>

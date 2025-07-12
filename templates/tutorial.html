@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AurumAI Tutorial</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      color: #333;
+    }
+
+    .header {
+      background-color: #ffd700;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .tutorial-step {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .tutorial-step h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+
+    .tutorial-step img,
+    .tutorial-step video {
+      max-width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tutorial-step p {
+      font-size: 16px;
+      color: #ffd700;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  {% include '_navbar.html' %}
+  <div class="header">AurumAI Quick Start Guide</div>
+
+  <!-- CLICK ADD SITE BUTTON -->
+  <!-- Step 1 -->
+  <div class="tutorial-container">
+    <h1>🗺️ How to Use the Map</h1>
+
+    <section class="tutorial-step">
+      <h2>1. Adding a Site</h2>
+      <p>Click the yellow <strong>➕ Add New Site</strong> button in the top-right corner to open the site entry form.
+      <ul>
+        <li><strong>Name:</strong> Any label you like</li>
+        <li><strong>Latitude & Longitude:</strong> Paste or tap on the map</li>
+        <li><strong>Notes:</strong> Add observations, hazards, or gold found</li>
+      </ul>
+      <p><em>Pro tip: Mark even “empty” spots—it narrows the hunt.</em></p>
+    </section>
+
+    <div class="tutorial-step">
+      <h2>Step 1: Add a New Site</h2>
+      <img src="/static/images/Add_site.gif" class="tutorial-gif" alt="Add Site Demo"
+        style="max-width: 50%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+
+
+      </p>
+    </div>
+
+
+    <!-- FILL IN SITE DATA -->
+    <!-- Step 2 -->
+    <div class="tutorial-step">
+      <h2>Step 2: Fill in site info</h2>
+      <img src="/static/images/enter_data_new_file.gif" class="tutorial-gif" alt="Add Site Info"
+        style="max-width: 50%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+      <p>Enter known data into the site entry form.</p>
+    </div>
+
+
+    <!-- SAVED SITE DATA -->
+    <!-- Step 3 -->
+    <div class="tutorial-step">
+      <h2>Step 3: View Your Saved Sites</h2>
+      <img src="/static/images/on_pinclick.gif" class="tutorial-gif" alt="Add Site Info"
+        style="max-width: 50%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+      <p>Click on any pin on the map to see the saved site's name and notes. Your data is stored locally on your device.
+      </p>
+    </div>
+
+
+    {% include '_footer.html' %}
+</body>
+
+
+</html>

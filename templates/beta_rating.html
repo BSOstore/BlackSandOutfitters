@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Beta App Rating</title>
+</head>
+
+<body>
+    <h1>Current Average Rating</h1>
+    {% if average != "No ratings yet" %}
+    <p><strong>{{ average }}</strong> out of 5</p>
+    <p>Based on {{ count }} rating{{ '' if count == 1 else 's' }}</p>
+    {% else %}
+    <p>No ratings have been submitted yet.</p>
+    {% endif %}
+    <a href="{{ url_for('homepage') }}">Return to Home</a>
+</body>
+
+</html>

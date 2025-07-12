@@ -1,0 +1,35 @@
+button {
+  margin-right: 10px;
+}
+.clear-button {
+  display: inline-block;
+  padding: 0.4em 1em;
+  background-color: #ccc;
+  color: black;
+  border: 1px solid #999;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.clear-button:hover {
+  background-color: #bbb;
+}
+
+.button-like {
+  display: inline-block;
+  padding: 0.4em 1em;
+  background-color: #e0e0e0;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.button-like:hover {
+  background-color: #d5d5d5;
+}

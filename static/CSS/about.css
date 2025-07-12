@@ -1,0 +1,13 @@
+.about-container {
+  text-align: left;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px;
+}
+
+.about-coming-soon-container {
+  width: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

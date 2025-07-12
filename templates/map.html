@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Map | AurumAI</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+
+</head>
+
+<body>
+  {% include '_navbar.html' %}
+  <div class="map-wrapper">
+
+    <!-- MAP -->
+    <div id="map" style="height: 500px;"></div>
+
+    <!-- BUTTONS -->
+    <div class="button-stack">
+      <button class="map-overlay-button" onclick="toggleForm()">➕ Add New Site</button>
+      <button id="guideBtn" class="map-overlay-button">Guide Me</button>
+    </div>
+
+  </div>
+
+  <!-- ADD-SITE FORM -->
+  <div id="addSiteForm" class="popup-form hidden">
+    <form method="POST" action="{{ url_for('map_view') }}">
+      <input id="siteName" name="site_name" placeholder="Site name" required>
+      <input id="siteLat" name="latitude" placeholder="Latitude" type="number" step="any" required>
+      <input id="siteLon" name="longitude" placeholder="Longitude" type="number" step="any" required>
+      <textarea name="notes" placeholder="Notes…"></textarea>
+      <button type="submit">Save</button>
+      <button type="button" onclick="toggleForm()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-geometryutil"></script>
+
+
+
+  <script>
+    /* ---------- MAP ---------- */
+    const map = L.map('map').setView([35.1983, -114.0531], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+
+    /* ---------- Existing pins from Flask ---------- */
+    {% for site in sites %}
+    {% if site.lat is defined and site.lon is defined %}
+    L.marker([{{ site.lat }}, {{ site.lon }}]).addTo(map)
+      .bindPopup(`
+  <strong>{{ site.name }}</strong><br>
+  {{ site.notes | e }}<br>
+  <small>Lat: {{ site.lat }}<br>Lon: {{ site.lon }}</small><br><br>
+  <button onclick="removePin({{ site.lat }}, {{ site.lon }})">Remove Pin</button>
+`);
+
+    {% endif %}
+    {% endfor %}
+
+    function removePin(lat, lon) {
+      map.eachLayer(function (layer) {
+        if (layer instanceof L.Marker) {
+          const pos = layer.getLatLng();
+          if (pos.lat === lat && pos.lng === lon) {
+            map.removeLayer(layer);
+          }
+        }
+      });
+
+      fetch("/remove_pin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lat: lat, lon: lon })
+      });
+
+      // Optional: Make a request to Flask to delete it from the backend too
+      // Example:
+      // fetch(`/remove_pin?lat=${lat}&lon=${lon}`, { method: "POST" });
+    }
+
+
+    /* ---------- Toggle add-site form ---------- */
+    function toggleForm(lat = null, lon = null) {
+      const f = document.getElementById('addSiteForm');
+      const latF = document.getElementById('siteLat');
+      const lonF = document.getElementById('siteLon');
+      const nameF = document.getElementById('siteName');
+
+      if (!f.classList.contains('hidden')) {  // closing: reset
+        nameF.value = ''; latF.value = ''; lonF.value = '';
+      }
+      if (lat && lon) { latF.value = lat.toFixed(6); lonF.value = lon.toFixed(6); }
+      f.classList.toggle('hidden');
+    }
+
+    /* ---------- Long-press to add ---------- */
+    map.on('contextmenu', e => {
+      const lat = e.latlng.lat;
+      const lng = e.latlng.lng;
+
+      L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`
+      <strong>Save this location?</strong><br>
+      <button onclick="confirmAdd(${lat}, ${lng})">Yes</button>
+      <button onclick="map.closePopup()">No</button>
+    `)
+        .openOn(map);
+    });
+    function createSampleGrid(centerLat, centerLng) {
+      map.closePopup();
+
+      const spacingMeters = 3; // spacing between dots (~10 feet)
+      const halfGrid = 2;      // 5x5 grid
+
+      const center = L.latLng(centerLat, centerLng);
+
+      for (let row = -halfGrid; row <= halfGrid; row++) {
+        for (let col = -halfGrid; col <= halfGrid; col++) {
+          const offsetLatLng = L.GeometryUtil.destination(center, 0, row * spacingMeters);
+          const finalLatLng = L.GeometryUtil.destination(offsetLatLng, 90, col * spacingMeters);
+
+          const dot = L.circle(finalLatLng, {
+            radius: .75,
+            color: '#007bff',
+            fillColor: '#00aaff',
+            fillOpacity: 0.7,
+            weight: 1
+          }).addTo(map);
+        }
+      }
+    }
+
+
+
+
+    <!-- your <script> … </script> block comes AFTER this -->
+
+
+    function confirmAdd(lat, lon) {
+      map.closePopup();
+      toggleForm(lat, lon);
+    }
+  </script>
+  <script>
+    // Coordinates of your target site (replace with actual values)
+    const targetLat = {{ target_lat }};
+    const targetLng = {{ target_lng }};
+
+    let guideLine = null;
+
+    document.getElementById('guideBtn').addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(position => {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+
+        // Remove old guide line
+        if (guideLine) {
+          map.removeLayer(guideLine);
+        }
+
+        // Draw a dotted red line
+        guideLine = L.polyline([
+          [userLat, userLng],
+          [targetLat, targetLng]
+        ], {
+          color: 'red',
+          dashArray: '5, 10',
+          weight: 3
+        }).addTo(map);
+
+        map.fitBounds(guideLine.getBounds());
+
+      }, error => {
+        alert("Unable to retrieve your location.");
+      });
+    });
+  </script>
+
+  {% include '_footer.html' %}
+</body>
+
+
+</html>

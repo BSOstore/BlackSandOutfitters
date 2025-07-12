@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>AurumAI – Welcome</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  {% include '_navbar.html' %}
+
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <img src="{{ url_for('static', filename='images/aurumai_logo.jpg') }}" alt="AurumAI Logo" class="logo" />
+    <h2 class="tagline">Your AI-Powered Prospecting Starts Here</h2>
+
+    <p class="prompt">Where would you like to start your adventure?</p>
+
+    <div class="button-group">
+      <a href="/map"><button>MAP PAGE</button></a>
+      <a href="/tutorial"><button>TUTORIAL</button></a>
+      <a href="/upgrade"><button>UPGRADE</button></a>
+      <a href="/faq"><button>FAQ</button></a>
+      <a href="/about"><button>ABOUT AURUMAI</button></a>
+      <a href="/contact"><button>CONTACT US</button></a>
+      <a href="/roi"><button>ROI</button></a>
+    </div>
+  </div>
+
+  <div class="homepage-image">
+    <img src="{{ url_for('static', filename='images/grizzled_prospector1.png') }}" alt="Old Miner with Pan"
+      style="max-width: 100%; height: auto; margin-top: 20px; border-radius: 10px;">
+  </div>
+
+  <script>
+    // Create grid cells on load
+    window.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("gridOverlay");
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement("div");
+      }
+    });
+
+
+    // Toggle grid visibility
+    function toggleGrid() {
+      const grid = document.getElementById("gridOverlay");
+      grid.classList.toggle("hidden");
+    }
+  </script>
+
+
+  {% include '_footer.html' %}
+</body>
+
+</html>

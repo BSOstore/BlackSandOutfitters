@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div id="beta-container" style="max-width: 600px; margin: 40px auto;">
+        <p>
+            Thank you so much for helping us improve this app. We have lofty goals and need assessments from experts
+            like you.<br><br>
+            For your efforts, we’ll offer you a top-tier version of this app forever — all updates free as long as your
+            account is active.<br><br>
+            Please fill out the information below to get started.
+        </p>
+
+        <form action="/submit-beta" method="POST">
+            <label for="last-name">Last Name:</label><br>
+            <input type="text" id="last-name" name="last-name" required><br><br>
+
+            <label for="first-name">First Name:</label><br>
+            <input type="text" id="first-name" name="first-name" required><br><br>
+
+            <label for="state">State:</label><br>
+            <select id="state" name="state" required>
+                <option value="">--Select State--</option>
+                <option value="AZ">Arizona</option>
+                <option value="CA">California</option>
+                <option value="NV">Nevada</option>
+                <!-- Add more as needed -->
+            </select><br><br>
+
+            <label for="city">City:</label><br>
+            <select id="city" name="city" required>
+                <option value="">--Select City--</option>
+                <option value="Kingman">Kingman</option>
+                <option value="Las Vegas">Las Vegas</option>
+                <option value="Phoenix">Phoenix</option>
+                <!-- Add more as needed -->
+            </select><br><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <p>When you hit the "submit" button you will be redirected to the full app! Thanks again and enjoy.</p>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

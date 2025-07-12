@@ -1,0 +1,20 @@
+[
+  {
+    "name": "JoMama",
+    "lat": "36.1234",
+    "lon": "115.1232",
+    "notes": "dry wash"
+  },
+  {
+    "name": "Great Balls of Gold",
+    "lat": "36.4444",
+    "lon": "-113.4545",
+    "notes": "McTesterson"
+  },
+  {
+    "name": "Huge Nugget",
+    "lat": 35.114,
+    "lon": -114.365,
+    "notes": "Big nugget found here!"
+  }
+]

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<body id="top">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>AurumAI Field App_FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  </head>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('map_view') }}">Map</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('upgrade') }}">Upgrade</a></li>
+      <li><a href="{{ url_for('tutorial') }}">Tutorial</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      <li><a href="{{ url_for('roi') }}">ROI</a></li>
+    </ul>
+  </nav>
+
+</html>
+
+<body>
+  {% include '_navbar.html' %}
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+
+    <!-- Question Links -->
+    <ul class="faq-links" ul style="list-style-type: none;">
+      <li><a href="#q1">What is AurumAI?</a></li>
+      <li><a href="#q2">Can I use AurumAI offline?</a></li>
+      <li><a href="#q3">Will it work on iOS and Android?</a></li>
+      <li>
+        <a href="#q4">Does it need an internet connection to save data?</a>
+      </li>
+    </ul>
+
+    <!-- FAQ Answers -->
+    <div class="faq-answer" id="q1">
+      <h3>What is AurumAI?</h3>
+      <p>
+        AurumAI is a revolutionary new idea in gold prospecting. <br>
+        You are holding an AI-powered gold mine in your hand. It's like having <br>
+        a geologist, guide and gold-spotter alongside you in the field. <br>
+        AurumAI will help you find gold by pointing out likely gold deposits, <br>
+        analyzing pictures you take to identify your location for likelihood of deposits...IN REAL TIME.
+      </p>
+      <a href="#top">Back to Top</a>
+    </div>
+    <div class="faq-answer" id="q2">
+      <h3>Can I use AurumAI offline?</h3>
+      <p>
+        Yes. AurumAI's core features are fully functional offline after initial
+        setup, including map viewing and site tracking.
+      </p>
+      <a href="#top">Back to Top</a>
+    </div>
+
+    <div class="faq-answer" id="q3">
+      <h3>Will it work on iOS and Android?</h3>
+      <p>
+        Yes. The app is designed to work seamlessly on both platforms, and the
+        web version is mobile responsive.
+      </p>
+      <a href="#top">Back to Top</a>
+    </div>
+
+    <div class="faq-answer" id="q4">
+      <h3>Does it need an internet connection to save data?</h3>
+      <p>
+        Not at all. Data is saved locally, and synced to the cloud later if
+        connectivity is available.
+      </p>
+      <a href="#top">Back to Top</a>
+    </div>
+
+    <a href="/" class="menu-button">Return Home</a>
+  </div>
+
+  {% include '_footer.html' %}
+</body>
