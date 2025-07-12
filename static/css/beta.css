@@ -1,0 +1,72 @@
+/* Outer form container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* The form itself */
+form {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Make text inputs and selects full-width and centered */
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Checkbox and label inline */
+.checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 700px;
+  margin: 30px auto;
+  text-align: left;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  margin-top: 4px;
+  transform: scale(1.2); /* Optional: make checkbox slightly larger */
+}
+
+.checkbox-wrapper label {
+  flex: 1;
+}
+body {
+  background-color: #ffd700;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0 12px; /* ← Add this */
+}
+
+.form-wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}

@@ -55,9 +55,16 @@
 
   <script>
     /* ---------- MAP ---------- */
-    const map = L.map('map').setView([35.1983, -114.0531], 9);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      { attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+    const savedLat = localStorage.getItem("mapCenterLat");
+    const savedLng = localStorage.getItem("mapCenterLng");
+
+    const defaultCoords = [37.0, -95.7];  // fallback if no location set
+
+    const map = L.map('map').setView(
+      savedLat && savedLng ? [parseFloat(savedLat), parseFloat(savedLng)] : defaultCoords,
+      savedLat && savedLng ? 10 : 4
+    );
+
 
     /* ---------- Existing pins from Flask ---------- */
     {% for site in sites %}

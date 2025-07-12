@@ -1,9 +1,15 @@
 body {
-  background-color: #ffd700; /* override old if needed */
+  background-color: #ffd700;
   font-family: "Segoe UI", sans-serif;
-  text-align: center;
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+.form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /*SCROLLBAR SPACE*/

@@ -3,56 +3,238 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>AurumAI Beta Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/beta.css') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beta Signup</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #FFD700;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: black;
+            color: gold;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+            max-width: 700px;
+            margin: 30px auto;
+            text-align: left;
+            font-weight: bold;
+            line-height: 1.5;
+            padding: 10px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            margin-top: 4px;
+            transform: scale(1.2);
+        }
+
+        .checkbox-wrapper label {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="beta-container" style="max-width: 600px; margin: 40px auto;">
-        <p>
-            Thank you so much for helping us improve this app. We have lofty goals and need assessments from experts
-            like you.<br><br>
-            For your efforts, we’ll offer you a top-tier version of this app forever — all updates free as long as your
-            account is active.<br><br>
-            Please fill out the information below to get started.
-        </p>
+    <div class="form-wrapper">
+        <div class="content-wrapper">
+            <p>
+                Thank you so much for your interest in trying the new AurumAI app. You will be given exclusive access to
+                the
+                beta version. Here's the deal—what you’ll be testing is not the full, free v1 model. Your expertise is
+                needed to help us sharpen the edge before release.
 
-        <form action="/submit-beta" method="POST">
-            <label for="last-name">Last Name:</label><br>
-            <input type="text" id="last-name" name="last-name" required><br><br>
+                <br><br>We would like your opinions on features (current and proposed), usability, color scheme, and
+                anything else you think would improve the app.
 
-            <label for="first-name">First Name:</label><br>
-            <input type="text" id="first-name" name="first-name" required><br><br>
+                <br><br>For your generosity in helping us, you’ll receive a lifetime top tier version when it is
+                released.
+                You will keep this top tier status for as long as your account is active, including all future features
+                and
+                updates. It’s just our way of saying thanks.
 
-            <label for="state">State:</label><br>
-            <select id="state" name="state" required>
-                <option value="">--Select State--</option>
-                <option value="AZ">Arizona</option>
-                <option value="CA">California</option>
-                <option value="NV">Nevada</option>
-                <!-- Add more as needed -->
-            </select><br><br>
+                <br><br>The top tier status will be awarded after you return and take our short quiz on your opinion(s).
 
-            <label for="city">City:</label><br>
-            <select id="city" name="city" required>
-                <option value="">--Select City--</option>
-                <option value="Kingman">Kingman</option>
-                <option value="Las Vegas">Las Vegas</option>
-                <option value="Phoenix">Phoenix</option>
-                <!-- Add more as needed -->
-            </select><br><br>
+                <br><br>Thanks again, and we really do hope you enjoy this app!
+            </p>
+        </div>
 
-            <label for="age">Age:</label><br>
-            <input type="number" id="age" name="age" required><br><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
 
-            <p>When you hit the "submit" button you will be redirected to the full app! Thanks again and enjoy.</p>
+        <div class="form-container">
+            <form id="beta-form" onsubmit="event.preventDefault(); handleContinue();">
+                <label for="name"><strong>Full Name:</strong></label><br>
+                <input type="text" id="name" name="name" required><br>
 
-            <button type="submit">Submit</button>
-        </form>
+                <label for="email"><strong>Email:</strong></label><br>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="experience"><strong>Years as a Prospector:</strong></label><br>
+                <select id="experience" name="experience" required>
+                    <option value="">Select</option>
+                    <option value="0-5">0–5</option>
+                    <option value="6-10">6–10</option>
+                    <option value="+10">10+</option>
+                </select><br>
+
+                <h2>Select Your Region</h2>
+
+                <label for="state"><strong>State:</strong></label><br>
+                <select id="state" onchange="updateCities()" required>
+                    <option value="">Select State</option>
+                    <option value="AZ">AZ</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="NV">NV</option>
+                    <option value="OR">OR</option>
+                    <option value="WA">WA</option>
+                    <option value="MT">MT</option>
+                    <option value="ID">ID</option>
+                    <option value="AK">AK</option>
+                    <option value="NM">NM</option>
+                    <option value="UT">UT</option>
+                    <option value="SD">SD</option>
+                </select><br>
+
+                <label for="city"><strong>City:</strong></label><br>
+                <select id="city" required>
+                    <option value="">Select City</option>
+                </select><br>
+
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        By signing up to the beta test I guarantee I will use the app in the field and return to give
+                        honest
+                        replies/opinions of the app.
+                    </label>
+                </div>
+
+                <button type="submit">Join Beta & Go to Homepage</button>
+            </form>
+        </div>
+
+        <script>
+            const cityData = {
+                AZ: ["Kingman", "Prescott", "Quartzsite", "Wickenburg", "Globe", "Yuma", "Payson", "Other"],
+                CA: ["Redding", "Auburn", "Placerville", "Mariposa", "Grass Valley", "Bakersfield", "Barstow", "Other"],
+                CO: ["Idaho Springs", "Fairplay", "Leadville", "Breckenridge", "Cripple Creek", "Other"],
+                NV: ["Elko", "Tonopah", "Virginia City", "Reno", "Ely", "Other"],
+                OR: ["Grants Pass", "Baker City", "Cottage Grove", "Gold Hill", "Quartzville", "Other"],
+                WA: ["Liberty", "Sultan", "Wenatchee", "Okanogan", "Colville", "Other"],
+                MT: ["Helena", "Butte", "Libby", "Deer Lodge", "Virginia City", "Other"],
+                ID: ["Boise", "Idaho City", "Warren", "Pierce", "Elk City", "Other"],
+                AK: ["Nome", "Fairbanks", "Chicken", "Haines", "Juneau", "Other"],
+                NM: ["Silver City", "Hillsboro", "Red River", "Magdalena", "Other"],
+                UT: ["Marysvale", "Gold Hill", "Tintic", "Mercur", "Other"],
+                SD: ["Deadwood", "Lead", "Hill City", "Custer", "Other"],
+            };
+
+            const cityCoordinates = {
+                "Kingman": [35.1894, -114.0530], "Prescott": [34.5400, -112.4685], "Quartzsite": [33.6639, -114.2297],
+                "Wickenburg": [33.9681, -112.7293], "Globe": [33.3943, -110.7865], "Yuma": [32.6927, -114.6277], "Payson": [34.2309, -111.3251],
+                "Redding": [40.5865, -122.3917], "Auburn": [38.8966, -121.0769], "Placerville": [38.7296, -120.7985],
+                "Mariposa": [37.4849, -119.9666], "Grass Valley": [39.2191, -121.0611], "Bakersfield": [35.3733, -119.0187], "Barstow": [34.8958, -117.0173],
+                "Idaho Springs": [39.7422, -105.5139], "Fairplay": [39.2236, -106.0014], "Leadville": [39.2508, -106.2925],
+                "Breckenridge": [39.4817, -106.0384], "Cripple Creek": [38.7469, -105.1786],
+                "Elko": [40.8324, -115.7631], "Tonopah": [38.0667, -117.2319], "Virginia City": [39.3094, -119.6496],
+                "Reno": [39.5296, -119.8138], "Ely": [39.2470, -114.8885],
+                "Grants Pass": [42.4390, -123.3270], "Baker City": [44.7749, -117.8344], "Cottage Grove": [43.7976, -123.0598],
+                "Gold Hill": [42.4315, -123.0542], "Quartzville": [44.4564, -122.3717],
+                "Liberty": [47.3850, -120.6884], "Sultan": [47.8615, -121.8121], "Wenatchee": [47.4235, -120.3103],
+                "Okanogan": [48.3660, -119.5831], "Colville": [48.5446, -117.9010],
+                "Helena": [46.5884, -112.0245], "Butte": [46.0038, -112.5340], "Libby": [48.3886, -115.5560],
+                "Deer Lodge": [46.3955, -112.7406], "Boise": [43.6150, -116.2023], "Idaho City": [43.8280, -115.8371],
+                "Warren": [45.2052, -115.6564], "Pierce": [46.5007, -115.7984], "Elk City": [45.8321, -115.4405],
+                "Nome": [64.5011, -165.4064], "Fairbanks": [64.8378, -147.7164], "Chicken": [64.0702, -141.9360],
+                "Haines": [59.2358, -135.4450], "Juneau": [58.3019, -134.4197],
+                "Silver City": [32.7701, -108.2803], "Hillsboro": [32.9210, -107.5776], "Red River": [36.7084, -105.4061], "Magdalena": [34.1162, -107.2445],
+                "Marysvale": [38.4327, -112.2277], "Gold Hill": [40.0002, -113.6394], "Tintic": [39.9558, -112.1183], "Mercur": [40.1358, -112.3952],
+                "Deadwood": [44.3769, -103.7296], "Lead": [44.3522, -103.7652], "Hill City": [43.9336, -103.5746], "Custer": [43.7666, -103.5988]
+            };
+
+            const stateCoordinates = {
+                AZ: [34.0489, -111.0937], CA: [36.7783, -119.4179], CO: [39.5501, -105.7821],
+                NV: [38.8026, -116.4194], OR: [43.8041, -120.5542], WA: [47.7511, -120.7401],
+                MT: [46.8797, -110.3626], ID: [44.0682, -114.7420], AK: [64.2008, -149.4937],
+                NM: [34.5199, -105.8701], UT: [39.3200, -111.0937], SD: [43.9695, -99.9018]
+            };
+
+            function updateCities() {
+                const state = document.getElementById("state").value;
+                const citySelect = document.getElementById("city");
+                citySelect.innerHTML = '<option value="">Select City</option>';
+
+                if (state && cityData[state]) {
+                    cityData[state].forEach(city => {
+                        const option = document.createElement("option");
+                        option.value = city;
+                        option.text = city;
+                        citySelect.appendChild(option);
+                    });
+                }
+            }
+
+            function handleContinue() {
+                if (!document.getElementById("terms").checked) {
+                    alert("You must agree to the beta testing terms.");
+                    return;
+                }
+                const state = document.getElementById("state").value;
+                const city = document.getElementById("city").value;
+
+                const coords = city === "Other" ? stateCoordinates[state] : cityCoordinates[city];
+                if (coords) {
+                    localStorage.setItem("mapCenterLat", coords[0]);
+                    localStorage.setItem("mapCenterLng", coords[1]);
+                }
+
+                // optional storage of user info
+                localStorage.setItem("userName", document.getElementById("name").value);
+                localStorage.setItem("userEmail", document.getElementById("email").value);
+                localStorage.setItem("userExperience", document.getElementById("experience").value);
+
+                window.location.href = "/";
+            }
+        </script>
     </div>
 </body>
 
