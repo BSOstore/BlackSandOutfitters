@@ -11,9 +11,39 @@
 </head>
 
 <body>
+    {% include '_navbar.html' %}
     <h2>Beta Quiz</h2>
+    <div class="form-wrapper">
+        <div class="content-wrapper">
+            <p>
+                If you're here we owe you a debt of gratitude for using the new AurumAI prospecting app. We hope your
+                testing
+                went well and we are eager to hear what you thought.
+
+                <br><br>There are a few questions below that we would like you to answer truthfully as we will use your
+                input to
+                improve the app before the version 1 release.
+
+                <br><br>For your generosity in helping us, you’ll receive a lifetime top tier version when it is
+                released.
+                You will keep this top tier status for as long as your account is active, including all future features
+                and
+                updates. It’s just our way of saying thanks.
+
+                <br><br>Please answer the questions below:
+            </p>
+        </div>
+    </div>
     <form method="POST" action="/submit-quiz">
         <!-- Quiz questions will go here -->
+        <label>How many times were you able to use this app?</label><br>
+        <select name="frequency" required>
+            <option value="">--Select--</option>
+            <option value="Once">I didn't use it</option>
+            <option value="1-5">1-5 times</option>
+            <option value="6-10">6 to 10 times</option>
+            <option value="10+">More than 10 times</option>
+        </select><br><br>
         <label>How often do you go prospecting?</label><br>
         <select name="frequency" required>
             <option value="">--Select--</option>
@@ -42,28 +72,59 @@
         <label>What other features would you like to see?</label><br>
         <textarea name="dislike" rows="4" cols="50" placeholder="feature suggestions." required></textarea><br><br>
 
-        <label>Preferred gear type:</label><br>
-        <div class="form-group">
-            <input type="radio" name="gear" value="Panning" required> Panning<br>
-            <input type="radio" name="gear" value="Sluice" required> Sluice<br>
-            <input type="radio" name="gear" value="Highbanker" required> Highbanker<br>
-            <input type="radio" name="gear" value="Dredge" required> Dredge<br>
-            <input type="radio" name="gear" value="Drywasher"> Drywasher<br>
-            <input type="radio" name="gear" value="Metal Detector"> Metal Detector<br><br>
+        <label><u>What’s your preferred prospecting gear?</label></u><br><br>
+        <div class="checkbox-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="Panning" name="priority" value="Panning">
+                <label for="Panning">Panning</label><br>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="Sluicebox" name="priority" value="Sluicebox">
+                <label for="Sluicebox">Sluicebox</label><br>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="Highbanker" name="priority" value="Highbanker">
+                <label for="Highbanker">Highbanker</label><br>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="Dredge" name="priority" value="Dredge">
+                <label for="Dredge">Dredge</label><br>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="Drywasher" name="priority" value="Drywasher">
+                <label for="Drywasher">Drywasher</label><br>
+            </div>
+        </div>
+        <br><br>
+
+
+
+
+        <label><u>What’s most important to you in your gear?</u></label><br><br>
+        <div class="checkbox-group">
+            <input type="checkbox" id="lightweight" name="priority" value="Lightweight">
+            <label for="lightweight">Lightweight</label><br>
         </div>
 
-
-        <label>What’s most important to you in your gear?</label><br>
-        <div class="form-group">
-            <input type="checkbox" name="priority" value="Weight"> Lightweight<br>
-            <input type="checkbox" name="priority" value="Price"> Affordable<br>
-            <input type="checkbox" name="priority" value="Durability"> Durable<br>
-            <input type="checkbox" name="priority" value="Performance"> Max Recovery<br><br>
+        <div class="checkbox-group">
+            <input type="checkbox" id="Affordability" name="priority" value="Affordability">
+            <label for="Affordability">Affordability</label><br>
         </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="Durability" name="priority" value="Durability">
+            <label for="Durability">Durability</label><br>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="Performance" name="priority" value="Performance">
+            <label for="Performance">Performance</label><br>
+        </div>
+        <br><br>
 
-        <label for="rating">How would you rate the app overall?</label><br>
-        <input type="range" id="rating" name="rating" min="1" max="5" value="3" oninput="updateRating(this.value)">
-        <span id="rating-value">3</span> / 5<br><br>
+
+        <label for="rating"><u>How would you rate the app overall?</u></label><br>
+        <input type="range" id="rating" name="rating" min="1" max="5" value="5" oninput="updateRating(this.value)">
+        <span id="rating-value">5</span> / 5<br><br>
 
 
         <button type="submit">Submit Quiz</button>
@@ -75,7 +136,7 @@
             document.getElementById('rating-value').innerText = val;
         }
     </script>
-
+    {% include '_footer.html' %}
 </body>
 
 </html>

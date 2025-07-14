@@ -5,7 +5,7 @@
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
@@ -17,6 +17,13 @@
   <!-- Global styles -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 
+  <script>
+    var map = L.map('map').setView([35.26936441756111, -114.06358634496002], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
 
 </head>
 
@@ -25,7 +32,7 @@
   <div class="map-wrapper">
 
     <!-- MAP -->
-    <div id="map" style="height: 500px;"></div>
+    <div id="map"></div>
 
     <!-- BUTTONS -->
     <div class="button-stack">
@@ -202,6 +209,17 @@
       }, error => {
         alert("Unable to retrieve your location.");
       });
+    });
+  </script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map').setView([35.26936441756111, -114.06358634496002], 10);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
     });
   </script>
 

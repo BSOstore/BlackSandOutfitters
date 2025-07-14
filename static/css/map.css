@@ -26,10 +26,18 @@
       width: 100%;
     }
 
-    #map {
-      height: 100%;
-      width: 100%
-    }
+#map {
+  height: 80vh !important;
+  width: 90vw;
+  margin: 30px auto;
+  border-radius: 10px;
+  z-index: 1;
+  display: block;
+  background: #ccc; /* fallback background so you can *see* the div */
+}
+
+
+
 
     /*------- Floating buttons -------*/
     .button-stack {
